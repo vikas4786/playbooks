@@ -1,0 +1,25 @@
+---
+- name: partition creation ..
+  hosts: all
+  tasks:
+    - name: remove fstab entry ..
+      mount:
+        path: /strorage
+        src: /dev/sdb1
+        state: absent
+
+    - name: unmounting filesystem ..
+      mount:
+        path: /storage
+        src: /dev/sdb1
+        state: unmounted
+
+    - parted:
+        device: /dev/sdb
+        number: 1
+        state: absent
+
+    - name: deleting directory
+      file:
+        name: /storage
+        state: absent

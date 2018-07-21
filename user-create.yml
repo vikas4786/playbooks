@@ -1,6 +1,6 @@
 ---
 - hosts: target_servers
   become: true
-  become_user: ansible
+  remote_user: ansible
   roles:
     - user-create

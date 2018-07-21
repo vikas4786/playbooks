@@ -1,0 +1,31 @@
+---
+- name: partition creation ..
+  hosts: all
+  become: true
+  remote_user: ansible
+  tasks:
+    - parted:
+        device: /dev/sdb
+        number: 1
+        state: present
+        part_end: 1GiB
+
+    - name: applying filesystem ...
+      filesystem:
+        fstype: xfs
+        dev: /dev/sdb1
+        force: yes
+
+    - name: creating directory
+      file:
+        name: /storage
+        state: directory
+        mode: 775
+
+    - name: mounting filesystem ..
+      mount:
+        path: /storage
+        src: /dev/sdb1
+        fstype: xfs
+        opts: rw
+        state: mounted

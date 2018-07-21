@@ -1,0 +1,5 @@
+---
+- hosts: target_servers
+  become: true
+  roles:
+    - user-create

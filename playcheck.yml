@@ -1,0 +1,8 @@
+---
+- name: check ping
+  hosts: target_servers
+  become: true
+  remote_user: ansible
+  - tasks:
+    ping   
+    

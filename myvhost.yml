@@ -1,5 +1,5 @@
 ---
-- hosts: target_servers
+- hosts: all
   become: true
   remote_user: v1
   roles:

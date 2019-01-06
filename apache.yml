@@ -1,0 +1,9 @@
+---
+- name: deployment file
+  hosts: all
+  remote_user: vikas
+  serial: 1
+  tasks:
+    - name: installing httpd
+      yum: name=httpd state=latest
+

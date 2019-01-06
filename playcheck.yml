@@ -1,8 +1,8 @@
 ---
 - name: check ping
   hosts: target_servers
-  become: true
-  remote_user: ansible
-  - tasks:
-    ping   
-    
+  remote_user: vikas
+  tasks:
+  - name: using ping module to check ping
+    ping:
+
